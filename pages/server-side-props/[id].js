@@ -1,3 +1,4 @@
+// /server-side-props/123
 export default function ServerSideProps({ person }) {
   const { firstName, lastName } = person;
 
@@ -8,10 +9,17 @@ export default function ServerSideProps({ person }) {
   )
 }
 
+const fetchData = async (id) => {
+  console.log(id);
+  return { firstName: "John", lastName: "Doe" }
+};
+
 export async function getServerSideProps(context) {
+  const personId = context.params.id;
+  const personData = await fetchData(personId);
   return {
     props: {
-      person: { firstName: "John", lastName: "Doe" }
-    }, // will be passed to the page component as props
+      person: personData
+    },
   }
 }

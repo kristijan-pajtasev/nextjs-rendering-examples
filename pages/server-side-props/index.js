@@ -1,3 +1,4 @@
+// /server-side-props
 export default function ServerSideProps({ person }) {
   const { firstName, lastName } = person;
 
