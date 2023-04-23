@@ -1,13 +1,13 @@
-const BadPractices = () => {
+const BadPractices = ({firstName, secondName}) => {
   return (
-    <div>hello</div>
+    <div>hello {firstName} {secondName}</div>
   )
 }
 
 export async function getServerSideProps(context) {
   console.log("get server props")
   return {
-    props: {}
+    props: { firstName: "john", secondName: "doe"}
   }
 }
 
