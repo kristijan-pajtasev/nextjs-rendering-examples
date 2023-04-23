@@ -4,4 +4,11 @@ const BadPractices = () => {
   )
 }
 
+export async function getServerSideProps(context) {
+  console.log("get server props")
+  return {
+    props: {}
+  }
+}
+
 export default BadPractices
