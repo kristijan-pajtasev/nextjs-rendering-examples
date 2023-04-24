@@ -1,13 +1,13 @@
-const BadPractices = ({firstName, secondName}) => {
+const BadPractices = ({firstName, lastName}) => {
   return (
-    <div>hello {firstName} {secondName}</div>
+    <div>hello {firstName} {lastName}</div>
   )
 }
 
 const helper = async () => {
   const p = new Promise((res, rej) => {
     setTimeout(() => {
-      res({ firstName: "john", secondName: "doe"});
+      res({ firstName: "john", lastName: "doe"});
     },5000)
   });
   return p;
