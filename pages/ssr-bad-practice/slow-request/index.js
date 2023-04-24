@@ -4,7 +4,7 @@ const BadPractices = ({firstName, lastName}) => {
   )
 }
 
-const helper = async () => {
+const getData = async () => {
   const p = new Promise((res, rej) => {
     setTimeout(() => {
       res({ firstName: "john", lastName: "doe"});
@@ -15,7 +15,7 @@ const helper = async () => {
 
 export async function getServerSideProps(context) {
   console.log("get server props")
-  const data = await helper()
+  const data = await getData()
   return {
     props: data
   }
