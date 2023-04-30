@@ -10,6 +10,7 @@ const LinksContainer = () => {
       <Link style={inlineStyling} href={"/server-side-props/errors/3"}>Person 3</Link>
       <Link style={inlineStyling} href={"/server-side-props/errors/4"}>Person 4</Link>
       <Link style={inlineStyling} href={"/server-side-props/errors/5"}>Person 5</Link>
+      <Link style={inlineStyling} href={"/server-side-props/errors/6"}>Person 6</Link>
     </div>
   )
 }
@@ -43,18 +44,23 @@ export async function getServerSideProps(context) {
   const personId = context.params.id;
 
   if (personId === "4") {
-    return {
-      notFound: true,
-    }
+    return { notFound: true, }
   }
 
   if (personId === "5") {
+    context.res.statusCode = 500;
     return {
       props: {
-        error: {
-          status: 503,
-          message: "Service unavailable"
-        }
+        error: { status: 503, message: "Service unavailable" }
+      }
+    }
+  }
+
+  if (personId === "6") {
+    return {
+      redirect: {
+        destination: '/server-side-props/errors/1',
+        permanent: false,
       }
     }
   }
